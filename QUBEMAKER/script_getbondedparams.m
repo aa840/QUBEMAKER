@@ -17,7 +17,7 @@ new_psf = importdata(horzcat(inputfolder,'new_AA_psf'));
 bonds = importdata(horzcat(inputfolder, 'bonds' )); 
 
 %Get  OPLS number to name list and format correctly 
-OPLS_number_to_name = importdata('~/1_PhD_Year_1/2ndHalf2016/Important_Documents/Number_to_Atom_type');
+OPLS_number_to_name = importdata('../OPLS_Files/Number_to_Atom_type');
 OPLS_number_to_name = strtrim(OPLS_number_to_name);
 
 for i = 1:size(OPLS_number_to_name,1)
@@ -79,18 +79,16 @@ for i = 1:number_bonds
     OPLS_atom_names{i, 2} = bond_id_orig{i, 2}(2:4);
     
     j = 1;
-    changed = 'n';
-    while changed == 'n'
+    %Corresponding OPLS Names
+    for j = 1:size(OPLS_number_to_name,1)
         if strcmp(char(OPLS_number_to_name{j}(1)), OPLS_atom_names{i, 1})
             OPLS_atom_names{i, 1}  = char(OPLS_number_to_name{j}(2));
-            changed = 'y';
         end
         if strcmp(char(OPLS_number_to_name{j}(1)), OPLS_atom_names{i, 2})
             OPLS_atom_names{i, 2}  = char(OPLS_number_to_name{j}(2));
-            changed = 'y';
         end
-        j = j +1; 
     end
+    
 end
 %}
 

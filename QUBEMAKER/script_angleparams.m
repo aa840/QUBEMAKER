@@ -78,23 +78,18 @@ for i = 1:number_angle
     OPLS_atom_names{i, 3} = angle_id_orig{i, 3}(2:4);
     
     %Corresponding OPLS Names
-    j = 1; 
-    changed = 'n';
-    while changed == 'n'
+    for j = 1:size(OPLS_number_to_name,1)
         if strcmp(char(OPLS_number_to_name{j}(1)), OPLS_atom_names{i, 1})
             OPLS_atom_names{i, 1}  = char(OPLS_number_to_name{j}(2));
-            changed = 'y';
         end
         if strcmp(char(OPLS_number_to_name{j}(1)), OPLS_atom_names{i, 2})
             OPLS_atom_names{i, 2}  = char(OPLS_number_to_name{j}(2));
-            changed = 'y';
         end
         if strcmp(char(OPLS_number_to_name{j}(1)), OPLS_atom_names{i, 3})
             OPLS_atom_names{i, 3}  = char(OPLS_number_to_name{j}(2));
-            changed = 'y';
         end
-        j = j + 1; 
     end
+    
 end
 
 %Get angle parameters from this list - Original OPLS Values

@@ -34,7 +34,7 @@ copyfile(horzcat(inputfolder,'new_ionized.psf'), horzcat('../Output_File',folder
 copyfile(horzcat(inputfolder,'new_ionized.psf'), horzcat('../Final_File/',folder));
 
 %Angles and bonds
-script_getbondedparams( folder, N );
+script_getbondedparams( folder, N )
 script_angleparams( folder, N );
 
 %LJ parameters
