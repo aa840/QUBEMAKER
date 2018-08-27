@@ -8,7 +8,7 @@ fid = fopen(horzcat('../Final_File/','inp_file_intro.inp'), 'r'); %Boss types Zm
 
 %Outputs
 outputfilefolder  = horzcat('../Final_File', folder);
-outputfile = horzcat('./Modified_Seminario_FF', '.inp');
+outputfile = horzcat('./QUBE_FF', '.inp');
 fid_output = fopen(outputfile, 'w'); %Boss types Zmat is fine
 
 tline = fgets(fid);
@@ -24,31 +24,31 @@ while ischar(tline)
     
     if strcmp(strtrim(tline), 'ANGLE')
         fclose(fid_output);
-        ! cat "${input}bonds_ddec" >> "Modified_Seminario_FF.inp"
+        ! cat "${input}bonds_ddec" >> "QUBE_FF.inp"
         fid_output = fopen(outputfile, 'a'); %Boss types Zmat is fine
     end
     
     if strcmp(strtrim(tline), 'DIHEDRAL')
         fclose(fid_output);
-        ! cat "${input}angles_ddec" >> "Modified_Seminario_FF.inp"
+        ! cat "${input}angles_ddec" >> "QUBE_FF.inp"
         fid_output = fopen(outputfile, 'a'); %Boss types Zmat is fine
     end
     
     if strcmp(strtrim(tline), 'IMPROPER')
         fclose(fid_output);
-        ! cat "${input}dihedral_ddec_${tp_name}" >> "Modified_Seminario_FF.inp"
+        ! cat "${input}dihedral_ddec_${tp_name}" >> "QUBE_FF.inp"
         fid_output = fopen(outputfile, 'a'); %Boss types Zmat is fine
     end
     
     if strcmp(strtrim(tline), 'NONBONDED nbxmod 5 atom cdiel switch vatom vdistance vswitch -')
         fclose(fid_output);
-        ! cat "${input}improper_ddec" >> "Modified_Seminario_FF.inp"
+        ! cat "${input}improper_ddec" >> "QUBE_FF.inp"
         fid_output = fopen(outputfile, 'a'); %Boss types Zmat is fine
     end
     
     if strcmp(strtrim(tline), 'HBOND CUTHB 0.5')
         fclose(fid_output);
-        ! cat "${input}lj_ddec" >> "Modified_Seminario_FF.inp"
+        ! cat "${input}lj_ddec" >> "QUBE_FF.inp"
         fid_output = fopen(outputfile, 'a'); %Boss types Zmat is fine
     end
 
@@ -58,8 +58,7 @@ while ischar(tline)
 end
 
 %Move file to correct folder
-movefile(horzcat('Modified_Seminario_FF.inp'), horzcat('Modified_Seminario_FF_', tp_name, '.inp'));
-movefile(horzcat('./Modified_Seminario_FF_', tp_name, '.inp'), outputfilefolder);
+movefile(horzcat('./QUBE_FF.inp'), outputfilefolder);
 
 fclose(fid);
 
