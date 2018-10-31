@@ -1,4 +1,4 @@
-function  script_LJ( folder )
+function  script_LJ( folder, openmm )
 
 %LJ parameters
 
@@ -18,7 +18,10 @@ lj_params = importdata(horzcat(inputfolder,'lj_updated_eps80.dat'));
 
 sigma = lj_params(:, 2);
 epsilon = lj_params(:, 3);
-epsilon = - epsilon; %Charm convention
+
+if ( strcmpi((openmm), 'Y') == 0 ) 
+    epsilon = - epsilon; %Charm convention
+end
 
 rmin_over_two = zeros(size(lj_params,1),1);
 

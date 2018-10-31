@@ -1,6 +1,6 @@
 %Takes the new bond, angle, ddec, dihedral terms and adds them to the charm
 %force field
-function  final_force_field( folder, tp_name )
+function  final_force_field( folder, tp_name, openmm )
 
 %Inputs
 input_file_folder = horzcat('../Output_File',folder);
@@ -21,6 +21,12 @@ setenv('tp_name',tp_name);
 %bonds,angles,dihedrals,improper and LJ in the appropriate place. Remember
 %that charges are stored in the ionised.psf file 
 while ischar(tline) 
+        
+    if strcmp(strtrim(tline), '!END') && strcmpi(openmm, 'Y')
+        fclose(fid_output);
+        ! cat "${input}masses" >> "QUBE_FF.inp"
+        fid_output = fopen(outputfile, 'a'); %Boss types Zmat is fine
+    end
     
     if strcmp(strtrim(tline), 'ANGLE')
         fclose(fid_output);
@@ -57,9 +63,14 @@ while ischar(tline)
     
 end
 
-%Move file to correct folder
-movefile(horzcat('./QUBE_FF.inp'), outputfilefolder);
-
 fclose(fid);
+
+%Move file to correct folder
+if  strcmpi(openmm, 'Y')
+    movefile('./QUBE_FF.inp', './QUBE_FF.par');
+    movefile(horzcat('./QUBE_FF.par'), outputfilefolder);
+else
+    movefile(horzcat('./QUBE_FF.inp'), outputfilefolder);
+end
 
 end

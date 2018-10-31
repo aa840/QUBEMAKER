@@ -1,6 +1,9 @@
 % Main Function for creating NAMD input files
 % for protein specific force field. Run this script for file creation
 
+% Openmm file input specified by changing variable to Y
+openmm = 'N';
+
 %Name of folder with protein files
 folder_name = 'Example_1P7E';
 
@@ -28,6 +31,9 @@ if exist( horzcat('../Final_File/',folder_name), 'dir') == 0
     mkdir(horzcat('../Final_File/',folder_name))
 end
 
+%Find the masses of the atoms
+get_mass( folder, N );
+
 %Get bond/angles/dihedrals/impropers and new ionised file  
 [sum_charge_before, sum_charge_after] = process_ionised_psf( inputfolder, N );
 copyfile(horzcat(inputfolder,'new_ionized.psf'), horzcat('../Output_File',folder));
@@ -38,7 +44,7 @@ script_getbondedparams( folder, N )
 script_angleparams( folder, N );
 
 %LJ parameters
-script_LJ( folder );
+script_LJ( folder, openmm );
  
 %Improper
 script_angleimproper( folder, N );
@@ -47,4 +53,4 @@ script_angleimproper( folder, N );
 script_angledihedral( folder, N, tp_name );
 
 %Puts all the force field components together in a file in the Final_File folder
-final_force_field( folder, tp_name );
+final_force_field( folder, tp_name, openmm );
