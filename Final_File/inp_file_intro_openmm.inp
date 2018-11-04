@@ -1,0 +1,94 @@
+* Parameter File for System Specific Protein Force Fields*
+*
+!
+!PLEASE ENSURE USE OF PROPER LJ COMBINING RULES AND 1-4 SCALING TO ENSURE
+!PROPER IMPLEMENTATION OF THE FORCE FIELD
+!
+!Any questions, email aa840@cam.ac.uk
+!
+!Bond and angles parameters are taken from:
+!Harmonic Force Constants for Molecular Mechanics Force Fields via Hessian Matrix Projection
+!Alice E. A. Allen, Michael C. Payne, and Daniel J. Cole
+!Journal of Chemical Theory and Computation 2018 14 (1), 274-281
+!
+!Torsional parameters are taken from:
+!
+!Torsional Parameters that are not refit within the above work are taken from OPLS. 
+!OPLS is developed in the laboratory of: 
+!Prof. W.L. Jorgensen
+!Dept. of Chemistry
+!Yale University
+!
+!Additional References
+!
+!OPLS All-Atom Model for Amines: Resolution of the Amine Hydration
+!Problem. R. C. Rizzo and W. L. Jorgensen, J. Am. Chem. Soc., 121,
+!4827-4836 (1999).
+!
+!Gas-Phase and Liquid-State Properties of Esters, Nitriles, and Nitro
+!Compounds with the OPLS-AA Force Field. M. L. P. Price, D. Ostrovsky,
+!and W. L. Jorgensen, J. Comput. Chem., 22, 1340-1352 (2001).
+!
+!Evaluation and Reparameterization of the OPLS-AA Force Field for
+!Proteins via Comparison with Accurate Quantum Chemical Calculations on
+!Peptides. G. Kaminski, R. A. Friesner, J. Tirado-Rives and W. L.
+!Jorgensen, J. Phys. Chem. B, 105, 6474-6487 (2001).
+!
+!Perfluoroalkanes: Conformational Analysis and Liquid-State Properties
+!from Ab Initio and Monte Carlo Calculations. E. K. Watkins and
+!W. L. Jorgensen, J. Phys. Chem. A, 105, 4118-4125 (2001).
+!
+!Accuracy of Free Energies of Hydration from CM1 and CM3 Atomic
+!Charges.Blagovif, M. U.; Jorgensen, W. L., J. Comput. Chem. 2004, 25,
+!0000-0000.  Submitted.
+!
+!A five-site model for liquid water and the reproduction of the density
+!anomaly by rigid, non-polarizable models. M. W. Mahoney and
+!W. L. Jorgensen, J. Chem. Phys., 112, 8910-8922 (2000).
+!
+!Diffusion constant of the TIP5P model of liquid water. M. W. Mahoney
+!and W. L. Jorgensen, J. Chem. Phys., 114, 363-366 (2001).
+!
+!Rapid Estimation of Electronic Degrees of Freedom in Monte Carlo
+!Calculations for Polarizable Models of Liquid Water. M. W. Mahoney and
+!W. L. Jorgensen, J. Chem. Phys., 114, 9337-9349 (2001).
+!
+!Quantum, intramolecular flexibility, and polarizability effects on the
+!reproduction of the density anomaly of liquid water by simple
+!potential functions. M. W. Mahoney and W. L. Jorgensen,
+!J. Chem. Phys., 115, 10758-10768 (2001).
+!
+!Improved Peptide and Protein Torsional Energetics with the OPLS-AA
+!Force Field M. J. Robertson, J. Tirado-Rives and W. L. Jorgensen,
+!J. Chem. Theory. Comput. (2015)
+!
+!Development and Testing of the OPLS All-Atom Force Field on Conformational Energetics and Properties of Organic Liquids
+!William L. Jorgensen,*, David S. Maxwell, and, and Julian Tirado-Rives
+!J. Am. Chem. Soc  118, 11225-11236 (1996)
+!END
+
+
+BOND
+OT   HT     450.0       0.9572
+HT   HT       0.0       1.5139
+ANGLE
+HT   OT   HT      55.0    104.52
+DIHEDRAL
+IMPROPER
+
+
+NONBONDED nbxmod 5 atom cdiel switch vatom vdistance vswitch -
+cutnb 14.0 ctofnb 12.0 ctonnb 11.5 eps 1.0 e14fac 0.5 wmin 1.5 geom 
+!assigns use of OPLS combining rules
+
+
+OT    0.00   0.152100   1.768200  0.00   0.152100   1.768200
+HT    0.00   0.046000   0.224500  0.00   0.046000   0.22450
+SOD   0.00   0.000500   2.9969737 0.00   0.000500   2.9969737
+CLA   0.00   0.710000   2.2561487 0.00   0.710000   2.2561487
+
+HBOND CUTHB 0.5
+
+
+END 
+
