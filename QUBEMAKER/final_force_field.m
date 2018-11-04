@@ -4,7 +4,13 @@ function  final_force_field( folder, tp_name, openmm )
 
 %Inputs
 input_file_folder = horzcat('../Output_File',folder);
-fid = fopen(horzcat('../Final_File/','inp_file_intro.inp'), 'r'); %Boss types Zmat is fine
+
+if strcmpi(openmm, 'Y') 
+    fid = fopen(horzcat('../Final_File/inp_file_intro_openmm.inp'), 'r'); %Boss types Zmat is fine
+else
+    fid = fopen(horzcat('../Final_File/inp_file_intro.inp'), 'r'); %Boss types Zmat is fine  
+end
+
 
 %Outputs
 outputfilefolder  = horzcat('../Final_File', folder);
