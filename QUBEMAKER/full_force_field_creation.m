@@ -31,13 +31,13 @@ if exist( horzcat('../Final_File/',folder_name), 'dir') == 0
     mkdir(horzcat('../Final_File/',folder_name))
 end
 
-%Find the masses of the atoms
-get_mass( folder, N );
-
 %Get bond/angles/dihedrals/impropers and new ionised file  
 [sum_charge_before, sum_charge_after] = process_ionised_psf( inputfolder, N );
 copyfile(horzcat(inputfolder,'new_ionized.psf'), horzcat('../Output_File',folder));
 copyfile(horzcat(inputfolder,'new_ionized.psf'), horzcat('../Final_File/',folder));
+
+%Find the masses of the atoms
+get_mass( folder, N );
 
 %Angles and bonds
 script_getbondedparams( folder, N )
